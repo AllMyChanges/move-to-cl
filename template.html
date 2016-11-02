@@ -1,0 +1,17 @@
+<html>
+  <head>
+    <title>{{ title }}</title>
+  </head>
+  <body>
+    <h1 class="page-title">{{ title }}</h1>
+
+    <div class="user-profile">
+      <h1 class="user-profile__username">{{ user.username }}</h1>
+      <ul class="user-profile__contacts">
+        {% for contact in user.contacts %}
+          <li class="contact__type-{{ contact.type }}">{{ contact.value }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+  </body>
+</html>
