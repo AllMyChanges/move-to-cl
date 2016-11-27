@@ -30,7 +30,13 @@ def index():
     return template.render(Context({'user': user, 'title': title}))
 
 
-# In [1]: from templates_speed import index
+# CPython
+# In [1]: from django_speed import index
 
 # In [2]: %timeit index()
 # 10000 loops, best of 3: 133 µs per loop
+
+# PyPy
+# In [6]: %timeit index()
+# The slowest run took 38.21 times longer than the fastest. This could mean that an intermediate result is being cached.
+# 1000 loops, best of 3: 10.1 µs per loop

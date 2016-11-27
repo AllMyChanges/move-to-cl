@@ -19,9 +19,15 @@ def jinja_index():
     return jinja_template.render(user=user, title=title)
 
 
+# CPython
 # In [10]: %timeit jinja_index()
 # The slowest run took 5.19 times longer than the fastest. This could mean that an intermediate result is being cached.
 # 100000 loops, best of 3: 19.5 µs per loops
+
+# PyPy
+# In [11]: %timeit jinja_index()
+# The slowest run took 24.93 times longer than the fastest. This could mean that an intermediate result is being cached.
+# 100000 loops, best of 3: 3.64 µs per loop
 
 
 user = {

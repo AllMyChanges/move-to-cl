@@ -1,15 +1,15 @@
 ;; Посмотрим, насколько быстр cl-who
+(ql:quickload '(alexandria
+                cl-who))
+
 
 (defpackage :playground.templates
   (:use :cl)
   (:import-from #:cl-who
                 #:with-html-output-to-string
-                #:str
+                #:esc
                 #:htm))
 (in-package :playground.templates)
-
-
-(ql:quickload 'cl-who)
 
 
 (defun get-value (obj name)
@@ -25,13 +25,13 @@
     (with-html-output-to-string (s)
       (:html
        (:head
-        (:title (str title)))
+        (:title (esc title)))
        (:body
         (:h1 :class "page-title"
-             (str title))
+             (esc title))
         (:div :class "user-profile"
               (:h1 :class "user-profile__username"
-                   (str (get-value user '|username|)))
+                   (esc (get-value user '|username|)))
               (:ul :class "user-profile__contacts"
                    (loop
                       :for contact
@@ -39,7 +39,7 @@
                       :collect (htm (:li :class (concatenate 'string
                                                              "contact__type-"
                                                              (get-value contact '|type|))
-                                         (str (get-value contact '|value|))))))))))))
+                                         (esc (get-value contact '|value|))))))))))))
 
 ;; run as:
 ;; (time (dotimes (i 100000) (index)))
